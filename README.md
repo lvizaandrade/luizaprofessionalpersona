@@ -1,2 +1,3 @@
-# professional-persona
-Luiza Andrade’s professional portfolio: projects, personal story, video, and résumé.
+# Luiza Andrade — Professional Persona
+
+Class portfolio website with projects, personal story, YouTube video, and résumé.

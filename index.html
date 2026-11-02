@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Luiza Andrade | Professional Persona</title>
+
+
+
+<link href="subzona-case-study.html?v=fast-3" rel="prefetch"/>
+<link href="chegg-ledger-case-study.html?v=fast-3" rel="prefetch"/>
+<link href="case-study2.html?v=fast-3" rel="prefetch"/>
+<style>
+  :root{
+    --bg: #F6F3EF;
+    --bg-alt: #EFEAE3;
+    --ink: #17140F;
+    --near-black: #1B1815;
+    --oxblood: #7C2530;
+    --oxblood-dark: #5E1B23;
+    --cream-card: #FDFBF8;
+    --line: #DFD8CE;
+    --stone: #8B8375;
+    --stone-light: #B4ACA0;
+    --white: #FFFFFF;
+
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", monospace;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  ::selection{ background:var(--oxblood); color:var(--white); }
+
+  :focus-visible{
+    outline: 2px solid var(--oxblood);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width:1160px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+
+  /* ---------- Roadmap thread (signature element) ---------- */
+  .thread-track{
+    position:fixed;
+    left:32px;
+    top:0;
+    bottom:0;
+    width:2px;
+    z-index:5;
+    display:flex;
+    align-items:center;
+    pointer-events:none;
+  }
+  .thread-track svg{ height:70vh; width:2px; overflow:visible; }
+  .thread-line{
+    stroke:var(--line);
+    stroke-width:2;
+  }
+  .thread-fill{
+    stroke:var(--oxblood);
+    stroke-width:2;
+    stroke-dasharray:1000;
+    stroke-dashoffset:1000;
+    transition:stroke-dashoffset .1s linear;
+  }
+  @media (max-width:900px){
+    .thread-track{ display:none; }
+  }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(246,243,239,0.88);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:1160px;
+    margin:0 auto;
+    padding:22px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .logo{
+    font-family:var(--serif);
+    font-size:1.15rem;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  .navlinks{
+    display:flex;
+    gap:36px;
+    font-size:0.88rem;
+    font-weight:500;
+    color:var(--ink);
+  }
+  .navlinks a{
+    position:relative;
+    padding:4px 0;
+    transition:color .2s ease;
+  }
+  .navlinks a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width:0; height:1px;
+    background:var(--oxblood);
+    transition:width .25s ease;
+  }
+  .navlinks a:hover{ color:var(--oxblood); }
+  .navlinks a:hover::after{ width:100%; }
+
+  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; padding:6px; }
+  .nav-toggle span{ display:block; width:22px; height:2px; background:var(--ink); margin:5px 0; transition:.25s; }
+
+  @media (max-width:760px){
+    .navlinks{
+      position:fixed;
+      top:64px; right:0;
+      background:var(--cream-card);
+      flex-direction:column;
+      gap:0;
+      width:220px;
+      border:1px solid var(--line);
+      border-radius:8px 0 0 8px;
+      box-shadow:0 12px 30px rgba(0,0,0,0.12);
+      transform:translateX(110%);
+      transition:transform .3s ease;
+    }
+    .navlinks.open{ transform:translateX(0); }
+    .navlinks a{ padding:16px 22px; border-bottom:1px solid var(--line); }
+    .nav-toggle{ display:block; }
+  }
+
+  /* ---------- Eyebrow / labels ---------- */
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--oxblood);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:16px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:16px; height:1px;
+    background:var(--oxblood);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:110px 0 100px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.85fr;
+    gap:64px;
+    align-items:center;
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(2.8rem, 5.6vw, 4.6rem);
+    line-height:0.98;
+    letter-spacing:-0.02em;
+    margin-bottom:28px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--oxblood);
+  }
+  .hero p{
+    font-size:1.04rem;
+    color:#3B3730;
+    max-width:480px;
+    margin-bottom:16px;
+  }
+  .hero p:last-of-type{ margin-bottom:32px; }
+
+  .btn-row{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:34px; }
+  .btn{
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:0.92rem;
+    padding:14px 26px;
+    border-radius:2px;
+    cursor:pointer;
+    transition:all .22s ease;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btn-primary{
+    background:var(--oxblood);
+    color:var(--white);
+    border:1px solid var(--oxblood);
+  }
+  .btn-primary:hover{
+    background:var(--oxblood-dark);
+    border-color:var(--oxblood-dark);
+    transform:translateY(-1px);
+  }
+  .btn-ghost{
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--line);
+  }
+  .btn-ghost:hover{
+    border-color:var(--ink);
+    transform:translateY(-1px);
+  }
+
+  .badge-row{
+    display:flex; align-items:center; gap:10px;
+    font-size:0.85rem;
+    color:var(--stone);
+    font-family:var(--mono);
+  }
+  .badge-row svg{ flex-shrink:0; }
+
+  .hero-photo{
+    position:relative;
+  }
+  .hero-photo::before{
+    content:"";
+    position:absolute;
+    top:22px; left:22px;
+    width:100%; height:100%;
+    border:1px solid var(--oxblood);
+    z-index:0;
+  }
+  .hero-photo img{
+    position:relative;
+    z-index:1;
+    width:100%;
+    height:auto;
+    display:block;
+    object-fit:cover;
+    filter:grayscale(1) contrast(1.05);
+    aspect-ratio:4/5;
+    object-position: center 20%;
+  }
+
+  @media (max-width:900px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero{ padding:64px 0 60px; }
+    .hero-photo{ order:-1; max-width:340px; }
+  }
+
+  /* ---------- Section shells ---------- */
+  section{ padding:96px 0; }
+  .section-alt{ background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+
+  .section-head{ margin-bottom:56px; max-width:640px; }
+  .section-head h2{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(1.9rem, 3.4vw, 2.6rem);
+    letter-spacing:-0.01em;
+  }
+
+  /* ---------- Capabilities ---------- */
+  .cap-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
+  }
+  .cap-card{
+    background:var(--near-black);
+    color:var(--white);
+    padding:34px 28px;
+    min-height:340px;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    overflow:hidden;
+    transition:transform .3s ease;
+  }
+  .cap-card:hover{ transform:translateY(-4px); }
+  .cap-tag{
+    align-self:flex-start;
+    background:var(--oxblood);
+    color:var(--white);
+    font-family:var(--mono);
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:7px 13px;
+    margin-bottom:28px;
+  }
+  .cap-card h3{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:1.3rem;
+    margin-bottom:18px;
+  }
+  .cap-list{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:11px;
+    margin-top:auto;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,0.12);
+  }
+  .cap-list li{
+    font-size:0.88rem;
+    color:#C9C4BB;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .cap-list li::before{
+    content:"";
+    width:5px; height:5px;
+    background:var(--oxblood);
+    flex-shrink:0;
+    transform:translateY(-2px);
+  }
+
+  @media (max-width:900px){
+    .cap-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- Work ---------- */
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
+  }
+  .work-card{
+    background:var(--cream-card);
+    border:1px solid var(--line);
+    padding:36px 30px;
+    display:flex;
+    flex-direction:column;
+    transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+  }
+  .work-card:hover{
+    border-color:var(--oxblood);
+    transform:translateY(-4px);
+    box-shadow:0 18px 40px rgba(23,20,15,0.08);
+  }
+  .work-tag{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--oxblood);
+    margin-bottom:16px;
+  }
+  .work-card h3{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.4rem;
+    line-height:1.25;
+    margin-bottom:14px;
+  }
+  .work-card p{
+    font-size:0.93rem;
+    color:#544F46;
+    margin-bottom:26px;
+    flex-grow:1;
+  }
+  .work-meta{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+  }
+  .work-meta span{
+    font-family:var(--mono);
+    font-size:0.68rem;
+    letter-spacing:0.04em;
+    color:var(--stone);
+    border:1px solid var(--line);
+    padding:4px 9px;
+  }
+  .work-link{
+    font-weight:600;
+    font-size:0.9rem;
+    color:var(--oxblood);
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+  }
+  .work-link svg{ transition:transform .2s ease; }
+  .work-card:hover .work-link svg{ transform:translateX(4px); }
+
+  @media (max-width:900px){
+    .work-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- Contact / Footer ---------- */
+  .contact{
+    background:var(--near-black);
+    color:var(--white);
+  }
+  .contact .eyebrow{ color:#D98A93; }
+  .contact .eyebrow::before{ background:#D98A93; }
+  .contact h2{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(2.2rem, 4.6vw, 3.4rem);
+    margin-bottom:22px;
+    max-width:600px;
+  }
+  .contact p{
+    color:#B4ACA0;
+    max-width:480px;
+    margin-bottom:40px;
+    font-size:1rem;
+  }
+  .contact-links{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .contact-links a{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    font-size:1.05rem;
+    font-weight:500;
+    width:fit-content;
+    padding-bottom:6px;
+    border-bottom:1px solid rgba(255,255,255,0.18);
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .contact-links a:hover{ border-color:var(--oxblood); color:#E7A5AC; }
+
+  footer{
+    background:var(--ink);
+    color:#8B8375;
+    padding:26px 0;
+  }
+  .footer-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .footer-row .logo{ color:var(--white); font-size:1rem; }
+  .footer-tag{ font-family:var(--mono); font-size:0.78rem; color:#726C60; }
+  .footer-icons{ display:flex; gap:16px; }
+  .footer-icons a{ color:#8B8375; transition:color .2s ease; }
+  .footer-icons a:hover{ color:var(--oxblood); }
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .reveal{ opacity:1; transform:none; transition:none; }
+    .thread-fill{ transition:none; }
+  }
+
+</style>
+<style>:root{--motion-accent:#b43e51}
+.motion-progress{position:fixed;z-index:10000;top:0;left:0;width:100%;height:3px;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--motion-accent),#e79b75);pointer-events:none}
+.motion-ready .motion-reveal{opacity:0;transform:translateY(28px) scale(.985);transition:opacity .72s cubic-bezier(.2,.75,.25,1),transform .72s cubic-bezier(.2,.75,.25,1);transition-delay:var(--motion-delay,0ms)}
+.motion-ready .motion-reveal.motion-in{opacity:1;transform:none}
+.motion-ready .motion-pop{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease,border-color .35s ease;transform-style:preserve-3d;will-change:transform}
+.motion-ready .motion-pop:hover{transform:translateY(-7px) rotateX(var(--motion-rx,0deg)) rotateY(var(--motion-ry,0deg));box-shadow:0 20px 45px rgba(31,22,23,.13)}
+.motion-ready a,.motion-ready button{transition:transform .22s ease,color .22s ease,background-color .22s ease,border-color .22s ease}
+.motion-ready a:hover,.motion-ready button:hover{transform:translateY(-2px)}
+.motion-ready img{transition:transform .65s cubic-bezier(.2,.8,.2,1),filter .4s ease}
+.motion-ready .motion-pop:hover img,.motion-ready figure:hover img,.motion-ready .phone:hover img{transform:scale(1.025)}
+@media(max-width:800px),(pointer:coarse){.motion-ready .motion-pop:hover{transform:translateY(-4px)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.motion-progress{display:none}.motion-ready .motion-reveal{opacity:1;transform:none;transition:none}.motion-ready *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+<style>@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(assets/font-d76b2b5f397b.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/font-5f9f671b2c58.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/font-c327eacc9d20.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/font-9f49203e2ae8.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/font-949591173c23.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/font-73ee977f3973.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/font-334e1ee15178.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/font-35f7e7e06fa6.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/font-e90966715edc.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/font-425c6feef04d.woff2) format('woff2');
+}
+</style>
+<style>.reveal,.motion-ready .motion-reveal{opacity:1!important;transform:none!important;transition:none!important}.motion-pop{will-change:auto!important}</style><style>
+section{scroll-margin-top:95px} .hero p{font-size:18px;max-width:580px;margin:0 0 20px}.hero .eyebrow{margin-bottom:18px}.story-grid{display:grid;grid-template-columns: .85fr 1.15fr;gap:90px}.story-grid h2,.video-grid h2,.resume-row h2{font:400 clamp(32px,4vw,48px)/1.15 var(--serif);letter-spacing:-1px;margin:16px 0 24px}.story-caption{color:var(--oxblood);margin-top:30px}.story-copy p{font-size:18px;line-height:1.85;margin-bottom:22px}.draft-note{color:#756658;font-size:13px}.video-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:70px;align-items:center}.video-placeholder{aspect-ratio:16/10;background:#e4dcd2;border:1px solid #cdbfaf;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:#5e1b23}.play-symbol{font-size:64px;line-height:1}.video-placeholder small{color:#62584e}.pending{font-size:12px;border:1px solid #b9a99a;padding:4px 12px;margin-top:10px}.video-grid p,.resume-row p{font-size:18px;color:#60584e}.resume-row{display:flex;align-items:center;justify-content:space-between;gap:45px}.resume-placeholder{padding:22px;border:1px dashed #a29283;color:#65574c;min-width:260px}.resume-placeholder small{display:block;font-size:12px;margin-top:8px}.navlinks{gap:22px}.work-card h3{font-size:25px}.preview-banner{text-align:center;padding:10px 20px;background:#7c2530;color:white;font-size:12px;letter-spacing:.04em}header{position:sticky;top:0}.hero{padding-top:65px}.thread-track{display:none}
+@media(max-width:800px){.story-grid,.video-grid{grid-template-columns:1fr;gap:30px}.resume-row{flex-direction:column;align-items:start}.navlinks{gap:15px}.hero p,.story-copy p{font-size:17px}.wrap{padding-left:24px;padding-right:24px}}
+</style></head>
+<body class="" id="artifacts-component-root-html"><div id="site-content">
+<div aria-hidden="true" class="thread-track">
+<svg preserveAspectRatio="none" viewBox="0 0 2 1000">
+<line class="thread-line" x1="1" x2="1" y1="0" y2="1000"></line>
+<line class="thread-fill" id="threadFill" style="stroke-dashoffset: 0;" x1="1" x2="1" y1="0" y2="1000"></line>
+</svg>
+</div>
+<header>
+<nav>
+<div class="logo"><span data-edit-text="">Luiza Andrade</span></div>
+<div class="navlinks" id="navLinks">
+<a href="#about"><span data-edit-text="">About Me</span></a>
+<a href="#story"><span data-edit-text="">My Story</span></a>
+<a href="#video"><span data-edit-text="">Video</span></a>
+<a href="#resume"><span data-edit-text="">Résumé</span></a>
+<a href="#work"><span data-edit-text="">Projects</span></a>
+<a href="#contact"><span data-edit-text="">Contact</span></a>
+</div>
+<button aria-label="Toggle menu" class="nav-toggle" id="navToggle">
+<span></span><span></span><span></span>
+</button>
+</nav>
+</header>
+<section class="hero" id="about">
+<div class="wrap hero-grid">
+<div>
+<h1 class="reveal in"><span data-edit-text="">Luiza</span><br><span data-edit-text="">Andrade</span></h1>
+<div class="eyebrow"><span data-edit-text="">ABOUT ME</span></div><p><span data-edit-text="">I’m a University of Arizona student interested in product management and creating tools that make everyday life easier.</span></p><p><span data-edit-text="">Moving from Brazil to the United States, and returning each summer, continues to shape how I see people, opportunity, and the problems worth solving.</span></p><p><span data-edit-text="">I’m building this portfolio to share that perspective with product teams and the people I hope to learn from.</span></p><div class="btn-row reveal in">
+<a class="btn btn-primary" href="#work"><span data-edit-text="">View My Work →</span></a>
+<a class="btn btn-ghost" href="#video"><span data-edit-text="">Meet Me on Video</span></a>
+</div>
+<div class="badge-row reveal in">
+<svg fill="none" height="16" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" width="16"><path d="M22 10 12 5 2 10l10 5 10-5Z"></path><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"></path></svg>
+<span><span data-edit-text="">University of Arizona · Class of 2028</span></span>
+</div>
+</div>
+<div class="hero-photo reveal in" id="heroPhoto">
+<img decoding="async" fetchpriority="high" alt="Portrait of Luiza Andrade" id="heroPhotoImg" src="luiza-photo.jpg">
+</div>
+</div>
+</section>
+
+<section class="section-alt" id="story"><div class="wrap story-grid"><div><div class="eyebrow"><span data-edit-text="">MY STORY</span></div><h2><span data-edit-text="">How my perspective has changed</span></h2><p class="story-caption"><span data-edit-text="">Moving to the U.S. and returning to Brazil each summer</span></p></div><div class="story-copy"><p><span data-edit-text="">Going back home didn’t change the opportunities in front of me, it changed how I saw them.</span></p><p><span data-edit-text="">The first summer I went back to Brazil after starting college, I saw home differently. I had always known I was lucky to study and live in the United States, but during that visit, I started to really see what that meant. Being able to get an education and have choices about my future was a blessing I didn’t want to take for granted.</span></p><p><span data-edit-text="">When I came back to the U.S., I pushed myself harder. College was more personal because I understood how much the opportunity mattered to me. I wanted my effort to reflect my gratitude.</span></p><p><span data-edit-text="">That summer changed the way I think about growth. For me, it started with recognizing what I already had and deciding to do more with it. I’m still figuring out where my education will take me, but I want to look back knowing I gave myself the chance to find out.</span></p></div></div></section>
+<section id="work">
+<div class="wrap">
+<div class="section-head reveal in">
+<div class="eyebrow"><span data-edit-text="">Projects</span></div>
+<h2><span data-edit-text="">My projects</span></h2>
+</div>
+<div class="work-grid" id="workGrid">
+<div class="work-card reveal in">
+<div class="work-tag"><span data-edit-text="">Product Design</span></div>
+<h3><span data-edit-text="">SubZona</span></h3>
+<p><span data-edit-text="">Creating a leasing platform for the University of Arizona, where students can find housing via matchmaking </span></p>
+<div class="work-meta">
+<span><span data-edit-text="">UX Research</span></span>
+<span><span data-edit-text="">Wireframes</span></span>
+<span><span data-edit-text="">Usability Testing</span></span>
+</div>
+<a class="work-link" href="subzona-case-study.html?v=fast-3"><span data-edit-text="">View Case Study
+          </span><svg fill="none" height="15" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="15"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+<div class="work-card reveal in">
+<div class="work-tag"><span data-edit-text="">Product Strategy</span></div>
+<h3><span data-edit-text="">Chegg Ledger</span></h3>
+<p><span data-edit-text="">A product strategy concept exploring how student help-seeking patterns could help academic departments understand learning challenges.</span></p>
+<div class="work-meta">
+<span><span data-edit-text="">Product Strategy</span></span>
+<span><span data-edit-text="">Data Moat</span></span>
+<span><span data-edit-text="">B2B Pivot</span></span>
+</div>
+<a class="work-link" href="chegg-ledger-case-study.html?v=fast-3"><span data-edit-text="">View Case Study
+          </span><svg fill="none" height="15" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="15"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+<div class="work-card reveal in">
+<div class="work-tag"><span data-edit-text="">Customer Strategy</span></div>
+<h3><span data-edit-text="">Google Maps</span></h3>
+<p><span data-edit-text="">Designing a conversational interface for more personalized discovery.</span></p>
+<div class="work-meta">
+<span><span data-edit-text="">Segmentation</span></span>
+<span><span data-edit-text="">Onboarding Flow</span></span>
+<span><span data-edit-text="">Engagement Metrics</span></span>
+</div>
+<a class="work-link" href="case-study2.html?v=fast-3"><span data-edit-text="">View Case Study
+          </span><svg fill="none" height="15" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="15"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class="section-alt" id="video"><div class="wrap video-grid"><div class="video-player" data-youtube-id="OYPRXkYJsBc"><iframe src="https://www.youtube-nocookie.com/embed/OYPRXkYJsBc" title="Some Things Never Change — Luiza Andrade" loading="lazy" style="display:block;width:100%;aspect-ratio:16/9;border:0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe><p style="margin-top:12px;font-size:14px"><a href="https://youtu.be/OYPRXkYJsBc" target="_blank" rel="noopener"><span data-edit-text="">Watch on YouTube</span></a></p></div><div><div class="eyebrow"><span data-edit-text="">VIDEO</span></div><h2><span data-edit-text="">A little more about me</span></h2><p><span data-edit-text="">Watch my intro to hear more about my background and what I hope to do next</span></p></div></div></section><section id="resume"><div class="wrap resume-row"><div><div class="eyebrow"><span data-edit-text="">RÉSUMÉ</span></div><h2><span data-edit-text="">My résumé</span></h2><p><span data-edit-text=""></span></p></div><div class="resume-placeholder"><a class="btn btn-primary" href="assets/luiza-andrade-resume.pdf" target="_blank" rel="noopener"><span data-edit-text="">View my résumé</span></a><small><a href="assets/luiza-andrade-resume.pdf" download="Luiza-Andrade-Resume.pdf"><span data-edit-text="">Download PDF</span></a></small></div></div></section><section class="contact" id="contact">
+<div class="wrap">
+<div class="eyebrow reveal in"><span data-edit-text="">Contact</span></div>
+<h2 class="reveal in"><span data-edit-text="">Let's connect.</span></h2>
+<p class="reveal in"><span data-edit-text="">You can reach me by email or connect with me on LinkedIn.</span></p>
+<div class="contact-links reveal in">
+<a href="mailto:luiza531andrade@gmail.com">
+<svg fill="none" height="18" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" width="18"><rect height="16" rx="2" width="20" x="2" y="4"></rect><path d="m2 7 10 6 10-6"></path></svg>
+<span><span data-edit-text="">luiza531andrade@gmail.com</span></span>
+</a>
+<a href="https://www.linkedin.com/in/luizaandrade531/" rel="noopener" target="_blank">
+<svg fill="none" height="18" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" width="18"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6Z"></path><rect height="12" width="4" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+<span><span data-edit-text="">linkedin.com/in/luizaandrade531/</span></span>
+</a>
+</div>
+</div>
+</section>
+<footer>
+<div class="wrap footer-row">
+<div class="logo"><span data-edit-text="">Luiza Andrade</span></div>
+<div class="footer-tag"><span data-edit-text="">Tucson, AZ&nbsp;</span></div>
+<div class="footer-icons">
+<a aria-label="Email" href="mailto:luiza531andrade@gmail.com">
+<svg fill="none" height="18" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" width="18"><rect height="16" rx="2" width="20" x="2" y="4"></rect><path d="m2 7 10 6 10-6"></path></svg>
+</a>
+<a aria-label="LinkedIn" href="https://www.linkedin.com/in/luizaandrade531/" rel="noopener" target="_blank">
+<svg fill="none" height="18" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" width="18"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6Z"></path><rect height="12" width="4" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+</a>
+</div>
+</div>
+<p style="text-align:center;margin:20px 24px 0;font-size:14px;line-height:1.6;color:var(--sub,#6B5850)"><span data-edit-text="">Website design and writing developed with AI assistance. Project research and concepts are my own.</span></p>
+</footer>
+
+
+</div><script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => io.observe(el));
+
+  // Roadmap thread fill on scroll
+  const threadFill = document.getElementById('threadFill');
+  function updateThread(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = Math.min(scrollTop / docHeight, 1);
+    const len = 1000;
+    threadFill.style.strokeDashoffset = String(len - (len * pct));
+  }
+  window.addEventListener('scroll', updateThread, { passive:true });
+  updateThread();
+
+</script></body></html>
